@@ -22,7 +22,7 @@ clean:
   image: $IMAGE_OPENJDK_GRADLE
   stage: clean
   script:
-    - echo "cleaning leftovers from previous builds
+    - echo "cleaning leftovers from previous builds"
     - sh $CI_PROJECT_DIR/gradlew clean
 
 
