@@ -44,4 +44,4 @@ jobs:
 #       file: ./src/main/resources/docker/Dockerfile
 #       tags: user/app:latest
    - name: Check build path
-     run: tree -d ./build
+     run: tree  ./build
