@@ -17,13 +17,6 @@ jobs:
   steps:
 
     - uses: actions/checkout@v4
-
-    - name: Output Run ID
-      run: echo ${{ github.run_id }}
-    - name: Output Run Number
-      run: echo ${{ github.run_number }}
-    - name: Output Run Attempt
-      run: echo ${{ github.run_attempt }}
     - uses: actions/setup-java@v3
       with:
         distribution: 'temurin' # See 'Supported distributions' for available options
@@ -31,10 +24,14 @@ jobs:
     - name: Get version
       run: |
         echo "VERSION_NAME=$(${{github.workspace}}/gradlew -q printVersionName --no-daemon)" >> $GITHUB_ENV
-    - name: Test version
-      run: echo ${{ env.VERSION_NAME }}
-    - name: Print Semantic version with build no
+    - name: Build version
       run: echo "${{ env.VERSION_NAME }}.${{ github.run_number }}"
+    
+    - name: Integration Tests
+      run: ./gradlew test
+    - name: Build Jar
+      run: ./gradlew bootJar
+          
 #   - name:  Build using Gradle
 #     run:  gradle bootJar --no-daemon
 #
