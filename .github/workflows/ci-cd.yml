@@ -26,5 +26,5 @@ jobs:
      with:
         gradle-version: 8.4
 
-   - name:  Build Gradle 
-     run:  gradle build --dry-run
+   - name:  Build using Gradle
+     run:  gradle build
