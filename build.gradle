@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.vb'
-version = '0.0.1-SNAPSHOT'
+version = '0.1'
 
 java {
 	sourceCompatibility = '17'
@@ -47,4 +47,8 @@ tasks.named('bootBuildImage') {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+task printVersionName  {
+	println project.version
 }
