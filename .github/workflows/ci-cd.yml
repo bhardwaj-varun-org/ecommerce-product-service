@@ -28,20 +28,21 @@ jobs:
    - name:  Build using Gradle
      run:  gradle bootJar --no-daemon
 
+   - name: print build path tree
+     run: tree  ./build
+
    - name: Setup Docker Buildx
      uses: docker/setup-buildx-action@v3
 
-#   - name: Login to Docker Hub
-#     uses: docker/login-action@v3
-#     with:
-#      username: ${{ secrets.DOCKERHUB_USERNAME }}
-#      password: ${{ secrets.DOCKERHUB_PASSWORD }}
+   - name: Login to Docker Hub
+     uses: docker/login-action@v3
+     with:
+      username: ${{ secrets.DOCKERHUB_USERNAME }}
+      password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-#   - name: Build and push
-#     uses: docker/build-push-action@v5
-#     with:
-#       push: false
-#       file: ./src/main/resources/docker/Dockerfile
-#       tags: user/app:latest
-   - name: Check build path
-     run: tree  ./build
+   - name: Build and push
+     uses: docker/build-push-action@v5
+     with:
+       push: false
+       file: ./src/main/resources/docker/Dockerfile
+       tags: user/app:latest
