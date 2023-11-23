@@ -1,0 +1,22 @@
+
+name: Java CI with Gradle
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+    contents: read
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: command 
+     run: echo "working with github actions"
+
+
+     
