@@ -30,7 +30,9 @@ jobs:
         java-version: '17'
     - name: Get version
       run: |
-        echo "version_name = $( ${{github.workspace}}/gradlew -q printVersionName --no-daemon)" 
+        echo "VERSION_NAME = $( ${{github.workspace}}/gradlew -q printVersionName --no-daemon)" >> $GITHUB_ENV
+    - name: Test version
+      run: echo $VERSION_NAME
 
 #   - name:  Build using Gradle
 #     run:  gradle bootJar --no-daemon
